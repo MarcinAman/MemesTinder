@@ -30,7 +30,8 @@ def get_picture_from_html(html):
     alt_index_beg = html.index("\"", html.index("alt"))
     alt_index_end = html.index("\"", alt_index_beg + 1)
 
-    return Image(src[5:-1], html[alt_index_beg + 1:alt_index_end])
+    return Image(src[5:-1], html[alt_index_beg+1:alt_index_end])
+
 
 
 def filter_images(server_html):
@@ -41,7 +42,6 @@ def filter_images(server_html):
 def get_latest_page():
     request = get_page_html(base_domain).decode().split(" ")
     element_with_number = list(filter(lambda a: "https://kwejk.pl\">" in a, request))[-1]
-
     return list(filter(lambda a: a.isdigit(), element_with_number.replace("<", ">").split(">")))
 
 
