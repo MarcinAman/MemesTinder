@@ -1,4 +1,5 @@
 import urllib.request
+from lib.databaseMatching import *
 
 base_subdomain = "https://kwejk.pl/strona/"
 base_domain = "https://kwejk.pl/"
@@ -58,6 +59,6 @@ def get_next_memes():
 
 
 if __name__ == '__main__':
-    current_page = get_latest_page()[0]
-    for a in get_next_memes():
-        print(a.src + " " + a.alt)
+    create_database("MemesDB.db")
+    add_meme_to_db("MemesDB.db","some_source.jpg","Some alt text")
+    add_to_database(11, "some_source.jpg", 1, create_connection("MemesDB.db"))
