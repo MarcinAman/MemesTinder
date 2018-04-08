@@ -27,10 +27,11 @@ def get_picture_from_html(html):
     splitted_html = html.split(" ")
     src = list(filter(is_picture, splitted_html))[0]
 
-    alt_index_beg = html.index("\"",html.index("alt"))
-    alt_index_end = html.index("\"",alt_index_beg+1)
+    alt_index_beg = html.index("\"", html.index("alt"))
+    alt_index_end = html.index("\"", alt_index_beg + 1)
 
-    return Image(src[5:-1],html[alt_index_beg+1:alt_index_end])
+    return Image(src[5:-1], html[alt_index_beg+1:alt_index_end])
+
 
 
 def filter_images(server_html):
@@ -59,4 +60,4 @@ def get_next_memes():
 if __name__ == '__main__':
     current_page = get_latest_page()[0]
     for a in get_next_memes():
-        print(a.src + " " +a.alt)
+        print(a.src + " " + a.alt)
